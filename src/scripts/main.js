@@ -7,6 +7,10 @@ document.addEventListener('DOMContentLoaded', function () {
   const removeRowBtn = document.querySelector('.remove-row');
   const appendColumnBtn = document.querySelector('.append-column');
   const removeColumnBtn = document.querySelector('.remove-column');
+  const MAX_ROWS = 10;
+  const MIN_ROWS = 2;
+  const MAX_COLS = 10;
+  const MIN_COLS = 2;
 
   checkTable();
 
@@ -72,9 +76,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const rows = tbody.querySelectorAll('tr').length;
     const cols = rows > 0 ? tbody.querySelector('tr').cells.length : 0;
 
-    appendRowBtn.disabled = rows >= 10;
-    removeRowBtn.disabled = rows <= 2;
-    appendColumnBtn.disabled = cols >= 10;
-    removeColumnBtn.disabled = cols <= 2;
+    appendRowBtn.disabled = rows >= MAX_ROWS;
+    removeRowBtn.disabled = rows <= MIN_ROWS;
+    appendColumnBtn.disabled = cols >= MAX_COLS;
+    removeColumnBtn.disabled = cols <= MIN_COLS;
   }
 });
