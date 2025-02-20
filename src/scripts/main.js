@@ -73,8 +73,14 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function checkTable() {
-    const rows = tbody.querySelectorAll('tr').length;
-    const cols = rows > 0 ? tbody.querySelector('tr').cells.length : 0;
+    const rows =
+      tbody.querySelectorAll('tr').length < MIN_ROWS
+        ? MIN_ROWS
+        : tbody.querySelectorAll('tr').length;
+    const cols =
+      tbody.querySelector('tr').cells.length < MIN_COLS
+        ? MIN_COLS
+        : tbody.querySelector('tr').cells.length;
 
     appendRowBtn.disabled = rows >= MAX_ROWS;
     removeRowBtn.disabled = rows <= MIN_ROWS;
