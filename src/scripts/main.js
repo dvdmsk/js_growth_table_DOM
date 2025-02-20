@@ -7,11 +7,15 @@ checkTable(table);
 document.addEventListener('click', function (e) {
   const btn = e.target.closest('.button');
 
-  if (!btn) {
-    return undefined;
+  if (btn === null) {
+    return;
   }
 
   const rows = table.querySelectorAll('tr');
+
+  if (rows.length === 0) {
+    return;
+  }
 
   switch (btn.classList[0]) {
     case 'append-row':
@@ -44,7 +48,9 @@ function removeColumn(rows) {
   const rowsArr = [...rows];
 
   rowsArr.forEach((el) => {
-    el.cells[el.cells.length - 1].remove();
+    if (el.cells.length > 0) {
+      el.cells[el.cells.length - 1].remove();
+    }
   });
 }
 
@@ -55,12 +61,15 @@ function addRow(tableTarget, rows) {
 }
 
 function removeRow(rows) {
-  rows[rows.length - 1].remove();
+  if (rows.length > 0) {
+    rows[rows.length - 1].remove();
+  }
 }
 
 function checkTable(tableTarget) {
   const rows = tableTarget.querySelectorAll('tr').length;
-  const cols = tableTarget.querySelectorAll('tr')[0].cells.length;
+  const cols =
+    rows > 0 ? tableTarget.querySelectorAll('tr')[0].cells.length : 0;
   const btnAddCol = document.querySelector('.append-column');
   const btnRemCol = document.querySelector('.remove-column');
   const btnRemRow = document.querySelector('.remove-row');
