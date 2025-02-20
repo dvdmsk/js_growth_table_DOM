@@ -61,8 +61,6 @@ function addRow(tableTarget, rows) {
 }
 
 function removeRow(rows) {
-  rows[rows.length - 1].remove();
-
   if (rows.length > 0) {
     rows[rows.length - 1].remove();
   }
