@@ -31,5 +31,5 @@ Examples:
 
 ![2x2](./src/images/2x2.png)
 
-![3x10](./src/images/3x10.png)
+![3x10](./src/images/3x10.png)  
 
